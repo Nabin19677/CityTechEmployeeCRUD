@@ -7,9 +7,14 @@ import {
   deleteEmployee,
 } from "./employee.controller.js";
 
+//Validators
+import employeeRouteValidation from "./employee.validation.js";
+
 const Router = express.Router();
 
-Router.route("/").get(getAllEmployee).post(createEmployee);
+Router.route("/")
+  .get(employeeRouteValidation("body"), getAllEmployee)
+  .post(createEmployee);
 Router.route("/:employeeId")
   .get(getEmployee)
   .put(updateEmployee)

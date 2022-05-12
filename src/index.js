@@ -4,7 +4,8 @@ import db from "./db/index.js";
 import expressApp from "./express_app/index.js";
 
 db.then((db) => {
-  expressApp.listen(expressApp.get("port"), () => {
-    console.log(`Express App listening on port ${expressApp.get("port")}`);
+  const PORT = expressApp.get("port");
+  expressApp.listen(PORT, () => {
+    console.log(`Express App listening on port ${PORT}`);
   });
 }).catch(dbErrorHandler);
